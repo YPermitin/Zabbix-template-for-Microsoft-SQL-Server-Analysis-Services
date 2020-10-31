@@ -1,4 +1,4 @@
-# Zabbix template fo -Microsoft SQL Server Analysis Services
+# Zabbix template fo Microsoft SQL Server Analysis Services
 
 **Features**
 
