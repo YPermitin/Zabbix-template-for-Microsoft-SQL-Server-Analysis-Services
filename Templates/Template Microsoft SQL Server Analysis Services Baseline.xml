@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-11-01T14:50:01Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Microsoft SQL Server Analysis Services Baseline</template>
+            <name>Template Microsoft SQL Server Analysis Services Baseline</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>SSAS Instances Discovery</name>
+                    <key>instances.ssas.discovery</key>
+                    <delay>4h</delay>
+                    <description>SQL Server Analysis Services instances discovery with additional scripts lets discover Microsoft SQL Server Analysis Services instances.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Current Connections</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Connection\Current Connections&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Current number of client connections established.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Connection</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Current User Sessions</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Connection\Current User Sessions&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Current number of user sessions established.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Connection</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Cleaner Current Price</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Memory\Cleaner Current Price&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Current price of memory, $/byte/time, normalized to 1000.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Memory</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Cleaner Memory Nonshrinkable</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Memory\Cleaner Memory Nonshrinkable KB&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>Amount of memory, in bytes, not subject to purging by the background cleaner.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Memory</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Cleaner Memory Shrinkable</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Memory\Cleaner Memory Shrinkable KB&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>Amount of memory, in bytes, subject to purging by the background cleaner.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Memory</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Memory Limit High</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Memory\Memory Limit High KB&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>High memory limit, from configuration file.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Memory</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Memory Limit Low</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Memory\Memory Limit Low KB&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>Low memory limit, from configuration file.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Memory</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Memory Usage</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Memory\Memory Usage KB&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>Memory usage of the server process as used in calculating cleaner memory price. Equal to counter Process\PrivateBytes plus the size of memory-mapped data, ignoring any memory which was mapped or allocated by the VertiPaq in-memory analytics engine (VertiPaq) in excess of the VertiPaq engine Memory Limit.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Memory</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1024</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Processing Aggregations Rows Created/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Proc Aggregations\Rows Created/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of aggregation rows created.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Processing Aggregations</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Processing Rows converted/sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Processing\Rows converted/sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of rows converted during processing.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Proccessing</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Processing Rows Read/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Processing\Rows Read/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of rows read from all relational databases.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Proccessing</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Processing Rows Written/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Processing\Rows Written/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of rows written during processing.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Proccessing</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Processing Indexes Rows/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Proc Indexes\Rows/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of rows from MOLAP files used to create indexes.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Proccessing Indexes</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Calculation cache hits/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Calculation cache hits/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of calculation cache hits. This includes global, session, and query scope calculation caches.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Calculation cache lookups/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Calculation cache lookups/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of calculation cache lookups. This includes global, session, and query scope calculation caches.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Dimension cache hits/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Dimension cache hits/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of dimension cache hits.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Dimension cache lookups/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Dimension cache lookups/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of dimension cache lookups.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Flat cache hits/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Flat cache hits/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of flat cache hits. This includes global, session, and query scope flat caches.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Flat cache lookups/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Flat cache lookups/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of flat cache lookups. This includes global, session, and query scope flat caches.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Measure group cache hits/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Measure group cache hits/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of measure group cache hits.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Measure group cache lookups/Sec</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Storage Engine Query\Measure group cache lookups/Sec&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Rate of measure group cache lookups.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Storage Engine Query</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Long parsing job queue length</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Threads\Long parsing job queue length&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Number of jobs in the queue of the long parsing thread pool.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Threads</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Processing pool job queue length</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Threads\Processing pool job queue length&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Number of non-I/O jobs in the queue of the processing thread pool.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Threads</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Query pool job queue length</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Threads\Query pool job queue length&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Number of jobs in the queue of the query thread pool.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Threads</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>SSAS Instance {#SSASINSTANCE}: Short parsing job queue length</name>
+                            <key>perf_counter_en[&quot;\{#SSASINSTANCE}:Threads\Short parsing job queue length&quot;]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Number of jobs in the queue of the short parsing thread pool.</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#SSASINSTANCE}: Threads</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
